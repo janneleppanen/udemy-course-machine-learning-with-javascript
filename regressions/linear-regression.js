@@ -99,7 +99,7 @@ class LinearRegression {
       return;
     }
 
-    if (this.mseHistory[0] < this.mseHistory[1]) {
+    if (this.mseHistory[0] > this.mseHistory[1]) {
       this.options.learningRate /= 2;
     } else {
       this.options.learningRate *= 1.05;
