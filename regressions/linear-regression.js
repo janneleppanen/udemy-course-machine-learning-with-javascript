@@ -56,6 +56,10 @@ class LinearRegression {
     this.weights = this.weights.sub(slopes.mul(this.options.learningRate));
   }
 
+  predict(observations) {
+    return this.processFeatures(observations).matMul(this.weights);
+  }
+
   test(testFeatures, testLabels) {
     testFeatures = this.processFeatures(testFeatures);
     testLabels = tf.tensor(testLabels);
