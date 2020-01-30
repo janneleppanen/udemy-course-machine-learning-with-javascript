@@ -11,7 +11,8 @@ class LogisticRegression {
       {
         learningRate: 0.1,
         iterations: 1000,
-        batchSize: 10
+        batchSize: 10,
+        decisionBoundary: 0.5
       },
       options
     );
@@ -59,11 +60,13 @@ class LogisticRegression {
   predict(observations) {
     return this.processFeatures(observations)
       .matMul(this.weights)
-      .sigmoid();
+      .sigmoid()
+      .greater(this.options.decisionBoundary)
+      .cast("float32");
   }
 
   test(testFeatures, testLabels) {
-    const predictions = this.predict(testFeatures).round();
+    const predictions = this.predict(testFeatures);
     testLabels = tf.tensor(testLabels);
 
     const incorrect = predictions
