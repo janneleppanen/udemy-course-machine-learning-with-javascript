@@ -35,4 +35,4 @@ const regression = new LogisticRegression(features, _.flatMap(labels), {
 });
 
 regression.train();
-regression.predict([[215, 440, 2.16]]).print();
+regression.predict([[150, 200, 2.223]]).print();
