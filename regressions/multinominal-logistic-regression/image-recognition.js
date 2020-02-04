@@ -26,7 +26,7 @@ const regression = new LogisticRegression(features, labels, {
 
 regression.train();
 
-const testMnistData = mnist.testing(0, 1000);
+const testMnistData = mnist.testing(0, 100);
 const testFeatures = testMnistData.images.values.map(image => _.flatMap(image));
 const testEncodedLabels = testMnistData.labels.values.map(label => {
   const row = new Array(10).fill(0);
